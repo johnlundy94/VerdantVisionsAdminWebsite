@@ -14,32 +14,33 @@ import {
   BottomNavigationAction,
   ListItemButton,
 } from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import HomeIcon from "@mui/icons-material/Home";
+import CheckIcon from "@mui/icons-material/Check";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const pages = [
-  { name: "Home", path: "/", type: "link", icon: MailIcon },
-  { name: "Quotes", path: "/quoteManage", type: "link", icon: RestoreIcon },
+  { name: "Home", path: "/", type: "link", icon: HomeIcon },
+  { name: "Quotes", path: "/quoteManage", type: "link", icon: FormatQuoteIcon },
   {
     name: "Completed Projects",
     path: "/completed",
     type: "link",
-    icon: RestoreIcon,
+    icon: CheckIcon,
   },
   {
     name: "Customer Communication",
     path: "/communication",
     type: "link",
-    icon: RestoreIcon,
+    icon: ChatBubbleIcon,
   },
   {
     name: "Quick Stats",
     path: "/quick",
     type: "link",
-    icon: LocationOnIcon,
+    icon: QueryStatsIcon,
   },
 ];
 
