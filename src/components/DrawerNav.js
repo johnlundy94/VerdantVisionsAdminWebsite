@@ -1,4 +1,7 @@
+import React from "react";
 import {
+  useTheme,
+  useMediaQuery,
   Box,
   Drawer,
   List,
@@ -7,11 +10,18 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  BottomNavigation,
+  BottomNavigationAction,
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
-// ... import other icons
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 function DrawerNav() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const pages = [
     "Home",
     "Quotes",
@@ -20,7 +30,9 @@ function DrawerNav() {
     "Quick Stats",
   ];
 
-  return (
+  const [value, setValue] = React.useState(0);
+
+  const drawer = (
     <Box sx={{ display: "flex" }}>
       <Drawer
         color="#B03737"
@@ -56,6 +68,31 @@ function DrawerNav() {
       </Drawer>
     </Box>
   );
+
+  const bottomNav = (
+    <BottomNavigation
+      showLabels
+      sx={{
+        width: "100%",
+        position: "fixed",
+        bottom: 0,
+        "& .Mui-selected": {
+          // Ensure selected state is visible if not already
+          color: "primary.main",
+        },
+      }}
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+    >
+      {pages.map((page, index) => (
+        <BottomNavigationAction key={page} label={page} icon={<MailIcon />} />
+      ))}
+    </BottomNavigation>
+  );
+
+  return isMobile ? bottomNav : drawer;
 }
 
 export default DrawerNav;
