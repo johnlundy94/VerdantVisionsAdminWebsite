@@ -1,8 +1,13 @@
 import "./Dashboard.css";
-import DrawerNav from "../../components/DrawerNav";
 
 function Dashboard() {
-  return <DrawerNav />;
+  return (
+    <div className="dashboard-container">
+      <div className="dashboard-content">
+        <h1>Dashboard</h1>
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;

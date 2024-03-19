@@ -1,3 +1,10 @@
 .App {
   text-align: center;
+  text-rendering: optimizeSpeed;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.drawer-nav-section {
+  grid-column: 1 / span 2;
 }

@@ -1,4 +1,3 @@
-import "./DrawerNav.css";
 import {
   Box,
   Drawer,
@@ -11,8 +10,6 @@ import {
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 // ... import other icons
-
-const drawerWidth = 240;
 
 function DrawerNav() {
   const pages = [
@@ -29,11 +26,13 @@ function DrawerNav() {
         color="#B03737"
         variant="permanent"
         sx={{
-          width: drawerWidth,
-          flexShrink: 0,
+          width: `calc(100% / 12 * 2)`,
+          flexShrink: 1,
           [`& .MuiDrawer-paper`]: {
-            width: drawerWidth,
-            boxSizing: "border-box",
+            width: "calc(100% / 12 * 2)",
+            boxSizing: "border-box", // Make sure padding and borders are inside the width
+            minWidth: "calc(100% / 12 * 2)", // Prevent any smaller width
+            maxWidth: "calc(100% / 12 * 2)",
           },
         }}
       >
@@ -47,7 +46,6 @@ function DrawerNav() {
             {pages.map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {/* Replace with appropriate icons */}
                   {index % 2 === 0 ? <MailIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
@@ -56,23 +54,8 @@ function DrawerNav() {
           </List>
         </Box>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {/* Content here */}
-      </Box>
     </Box>
   );
 }
 
 export default DrawerNav;
-
-{
-  /*
-<h2>Recent Activities</h2>
-<h2>New Quote Requests</h2>
-<h2>Completed Projects</h2>
-<h2>Customer Inquiries</h2>
-<h2>Pending Actions</h2>
-<h2>Quotes Awaiting Approval</h2>
-<h2>Unanswered Customer Emails</h2>
-<h2>Quick Stats</h2> */
-}
