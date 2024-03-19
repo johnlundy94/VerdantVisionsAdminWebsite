@@ -5,6 +5,6 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
-.drawer-nav-section {
+.nav-section {
   grid-column: 1 / span 2;
 }

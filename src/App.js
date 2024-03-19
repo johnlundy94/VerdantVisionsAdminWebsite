@@ -5,15 +5,15 @@ import muiTheme from "./muiTheme";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import QuoteManage from "./pages/QuoteManage/QuoteManage";
 import Communication from "./pages/Communication/Communication";
-import DrawerNav from "./components/DrawerNav";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={muiTheme}>
         <Router>
-          <div className="drawer-nav-section">
-            <DrawerNav />
+          <div className="nav-section">
+            <Nav />
           </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />

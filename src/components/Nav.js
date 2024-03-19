@@ -18,7 +18,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-function DrawerNav() {
+function Nav() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -95,4 +95,4 @@ function DrawerNav() {
   return isMobile ? bottomNav : drawer;
 }
 
-export default DrawerNav;
+export default Nav;
