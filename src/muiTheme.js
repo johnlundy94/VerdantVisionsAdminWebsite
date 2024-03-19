@@ -27,18 +27,16 @@ const muiTheme = createTheme({
       },
     },
     MuiBottomNavigationAction: {
-      // This will ensure the label is always shown, adjust as needed for your design
       styleOverrides: {
         root: {
           "&.Mui-selected .MuiBottomNavigationAction-label": {
-            // Correct the selector for the selected state
-            color: "#FFFFFF", // Set the color to white for selected state
+            color: "#FFFFFF",
           },
           backgroundColor: "#A7BC5B",
         },
       },
       defaultProps: {
-        showLabels: true, // This ensures labels are always shown
+        showLabels: true,
       },
     },
   },

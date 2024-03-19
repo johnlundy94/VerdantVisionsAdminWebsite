@@ -12,25 +12,50 @@ import {
   Typography,
   BottomNavigation,
   BottomNavigationAction,
+  ListItemButton,
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const pages = [
+  { name: "Home", path: "/", type: "link", icon: MailIcon },
+  { name: "Quotes", path: "/quoteManage", type: "link", icon: RestoreIcon },
+  {
+    name: "Completed Projects",
+    path: "/completed",
+    type: "link",
+    icon: RestoreIcon,
+  },
+  {
+    name: "Customer Communication",
+    path: "/communication",
+    type: "link",
+    icon: RestoreIcon,
+  },
+  {
+    name: "Quick Stats",
+    path: "/quick",
+    type: "link",
+    icon: LocationOnIcon,
+  },
+];
 
 function Nav() {
+  const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const pages = [
-    "Home",
-    "Quotes",
-    "Completed Projects",
-    "Customer Communication",
-    "Quick Stats",
-  ];
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-  const [value, setValue] = React.useState(0);
+  const findCurrentPageIndex = () => {
+    return pages.findIndex((p) => p.path === currentPath);
+  };
+
+  const [value, setValue] = React.useState(findCurrentPageIndex());
 
   const drawer = (
     <Box sx={{ display: "flex" }}>
@@ -42,8 +67,8 @@ function Nav() {
           flexShrink: 1,
           [`& .MuiDrawer-paper`]: {
             width: "calc(100% / 12 * 2)",
-            boxSizing: "border-box", // Make sure padding and borders are inside the width
-            minWidth: "calc(100% / 12 * 2)", // Prevent any smaller width
+            boxSizing: "border-box",
+            minWidth: "calc(100% / 12 * 2)",
             maxWidth: "calc(100% / 12 * 2)",
           },
         }}
@@ -55,12 +80,12 @@ function Nav() {
         </Toolbar>
         <Box sx={{ overflow: "auto" }}>
           <List>
-            {pages.map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <MailIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+            {pages.map((page, index) => (
+              <ListItem key={page.name}>
+                <ListItemButton href={page.path}>
+                  <ListItemIcon>{React.createElement(page.icon)}</ListItemIcon>
+                  <ListItemText primary={page.name} />
+                </ListItemButton>
               </ListItem>
             ))}
           </List>
@@ -70,26 +95,35 @@ function Nav() {
   );
 
   const bottomNav = (
-    <BottomNavigation
-      showLabels
-      sx={{
-        width: "100%",
-        position: "fixed",
-        bottom: 0,
-        "& .Mui-selected": {
-          // Ensure selected state is visible if not already
-          color: "primary.main",
-        },
-      }}
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-    >
-      {pages.map((page, index) => (
-        <BottomNavigationAction key={page} label={page} icon={<MailIcon />} />
-      ))}
-    </BottomNavigation>
+    <Box sx={{ width: 500 }}>
+      <BottomNavigation
+        showLabels
+        sx={{
+          width: "100%",
+          position: "fixed",
+          bottom: 0,
+          "& .Mui-selected": {
+            color: "primary.main",
+          },
+        }}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+          // Programmatically navigate to the new page using the history hook
+          const newPath = pages[newValue].path;
+          navigate(newPath); // This changes the URL to the new path
+        }}
+      >
+        {pages.map((page, index) => (
+          <BottomNavigationAction
+            key={page.name}
+            label={page.name}
+            value={index}
+            icon={React.createElement(page.icon)}
+          />
+        ))}
+      </BottomNavigation>
+    </Box>
   );
 
   return isMobile ? bottomNav : drawer;
