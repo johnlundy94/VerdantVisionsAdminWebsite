@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function ScheduleCard() {
   return (
@@ -14,6 +15,7 @@ function ScheduleCard() {
           scheduling system where you can assign workers to different projects
           and track their availability.
         </Typography>
+        <Button href="/schedule">Schedule Page</Button>
       </CardContent>
     </Card>
   );

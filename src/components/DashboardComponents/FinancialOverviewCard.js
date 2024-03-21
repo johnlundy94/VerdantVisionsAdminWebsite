@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function FinancialOverviewCard() {
   return (
@@ -14,6 +15,7 @@ function FinancialOverviewCard() {
           Include average quote values and conversion rates to help understand
           financial health.
         </Typography>
+        <Button href="/financial-overview">Financial Overview Page</Button>
       </CardContent>
     </Card>
   );

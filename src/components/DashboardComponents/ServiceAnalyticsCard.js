@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function ServiceAnalyticsCard() {
   return (
@@ -14,6 +15,7 @@ function ServiceAnalyticsCard() {
           create visual analytics using Chart.js, perhaps in the form of bar
           charts or pie charts, which will help in making business decisions.
         </Typography>
+        <Button href="/service-analytics">Service Analytics Page</Button>
       </CardContent>
     </Card>
   );

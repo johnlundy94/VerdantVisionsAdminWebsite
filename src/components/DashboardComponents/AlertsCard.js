@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -13,6 +14,7 @@ function AlertsCard() {
           Have a notification system that alerts the admin about new quotes,
           customer inquiries, or action items that need attention.
         </Typography>
+        <Button href="/alerts">Alerts Page</Button>
       </CardContent>
     </Card>
   );

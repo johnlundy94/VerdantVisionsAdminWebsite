@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function QuoteManageCard() {
   return (
@@ -15,6 +16,7 @@ function QuoteManageCard() {
           functionality for admins to update the status of a quote, such as
           "pending," "in progress," or "completed."
         </Typography>
+        <Button href="/quote-manage">Quote Management Page</Button>
       </CardContent>
     </Card>
   );

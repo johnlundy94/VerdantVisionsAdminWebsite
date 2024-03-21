@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function CustomerDataCard() {
   return (
@@ -14,6 +15,7 @@ function CustomerDataCard() {
           the quote form and an overview of their projects. Implement CRUD
           operations for managing this data.
         </Typography>
+        <Button href="/customer-data">Customer Data Page</Button>
       </CardContent>
     </Card>
   );

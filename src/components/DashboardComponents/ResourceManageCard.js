@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 function ResourceManageCard() {
   return (
@@ -13,6 +14,7 @@ function ResourceManageCard() {
           Track resources like materials, supplies, and equipment. This might be
           more backend-heavy but useful for inventory management.
         </Typography>
+        <Button href="/resource-manage">Resource Management Page</Button>
       </CardContent>
     </Card>
   );
