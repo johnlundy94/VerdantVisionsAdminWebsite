@@ -22,7 +22,15 @@ const muiTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
+          color: "#FFFFFF",
           backgroundColor: "#A7BC5B",
+        },
+      },
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          color: "#FFFFFF",
         },
       },
     },
