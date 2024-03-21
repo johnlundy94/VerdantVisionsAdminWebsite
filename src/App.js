@@ -2,12 +2,17 @@ import "./App.css";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import muiTheme from "./muiTheme";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import QuoteManage from "./pages/QuoteManage/QuoteManage";
-import CompletedProjects from "./pages/CompletedProjects/CompletedProjects";
-import Communication from "./pages/Communication/Communication";
 import Nav from "./components/Nav";
-import QuickStats from "./pages/QuickStats/QuickStats";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import AlertsPage from "./pages/AlertsPage/AlertsPage";
+import CustomerDataPage from "./pages/CustomerDataPage/CustomerDataPage";
+import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
+import FinancialOverviewPage from "./pages/FinancialOverviewPage/FinancialOverviewPage";
+import ProjectProgressPage from "./pages/ProjectProgressPage/ProjectProgressPage";
+import QuoteManagePage from "./pages/QuoteManagePage/QuoteManagePage";
+import ResourceManagePage from "./pages/ResourceManagePage/ResourceManagePage";
+import SchedulePage from "./pages/SchedulePage/SchedulePage";
+import ServiceAnalyticsPage from "./pages/ServiceAnalyticsPage/ServiceAnalyticsPage";
 
 function App() {
   return (
@@ -19,10 +24,39 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/quoteManage" element={<QuoteManage />} />
-            <Route path="/completed" element={<CompletedProjects />} />
-            <Route path="/communication" element={<Communication />} />
-            <Route path="/quick" element={<QuickStats />} />
+          </Routes>
+          <Routes>
+            <Route path="/alerts" element={<AlertsPage />} />
+          </Routes>
+          <Routes>
+            <Route path="/customer-data" element={<CustomerDataPage />} />
+          </Routes>
+          <Routes>
+            <Route path="/feedback" element={<FeedbackPage />} />
+          </Routes>
+          <Routes>
+            <Route
+              path="/financial-overview"
+              element={<FinancialOverviewPage />}
+            />
+          </Routes>
+          <Routes>
+            <Route path="/project-progress" element={<ProjectProgressPage />} />
+          </Routes>
+          <Routes>
+            <Route path="/quote-manage" element={<QuoteManagePage />} />
+          </Routes>
+          <Routes>
+            <Route path="/resource-manage" element={<ResourceManagePage />} />
+          </Routes>
+          <Routes>
+            <Route path="/schedule" element={<SchedulePage />} />
+          </Routes>
+          <Routes>
+            <Route
+              path="/service-analytics"
+              element={<ServiceAnalyticsPage />}
+            />
           </Routes>
         </Router>
       </ThemeProvider>
