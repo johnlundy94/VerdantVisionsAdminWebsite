@@ -15,32 +15,62 @@ import {
   ListItemButton,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
-import CheckIcon from "@mui/icons-material/Check";
+import AlarmAddIcon from "@mui/icons-material/AlarmAdd";
+import PersonIcon from "@mui/icons-material/Person";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import SavingsIcon from "@mui/icons-material/Savings";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import WarehouseIcon from "@mui/icons-material/Warehouse";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import TimelineIcon from "@mui/icons-material/Timeline";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const pages = [
-  { name: "Home", path: "/", type: "link", icon: HomeIcon },
-  { name: "Quotes", path: "/quoteManage", type: "link", icon: FormatQuoteIcon },
+  { name: "Dashboard", path: "/", type: "link", icon: HomeIcon },
+  { name: "Alerts", path: "/alerts", type: "link", icon: AlarmAddIcon },
   {
-    name: "Completed Projects",
-    path: "/completed",
+    name: "Customer Data",
+    path: "/customer-data",
     type: "link",
-    icon: CheckIcon,
+    icon: PersonIcon,
+  },
+  { name: "Feedback", path: "/feedback", type: "link", icon: ThumbUpAltIcon },
+  {
+    name: "Financial Overview",
+    path: "/financial-overview",
+    type: "link",
+    icon: SavingsIcon,
   },
   {
-    name: "Customer Communication",
-    path: "/communication",
+    name: "Project Progress",
+    path: "/project-progress",
     type: "link",
-    icon: ChatBubbleIcon,
+    icon: ArrowOutwardIcon,
   },
   {
-    name: "Quick Stats",
-    path: "/quick",
+    name: "Quote Management",
+    path: "/quote-manage",
     type: "link",
-    icon: QueryStatsIcon,
+    icon: FormatQuoteIcon,
+  },
+  {
+    name: "Resource Management",
+    path: "/resource-manage",
+    type: "link",
+    icon: WarehouseIcon,
+  },
+  {
+    name: "Schedule",
+    path: "/schedule",
+    type: "link",
+    icon: CalendarMonthIcon,
+  },
+  {
+    name: "Service Analytics",
+    path: "/service-analytics",
+    type: "link",
+    icon: TimelineIcon,
   },
 ];
 
