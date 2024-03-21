@@ -2,9 +2,35 @@
   min-height: 100vh;
   display: grid;
   max-width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-column: 3 / span 10;
 }
 
-.dashboard-content {
-  margin-left: 20px;
-  grid-column: 3 / span 10;
+.quote-manage-card-container {
+}
+
+.customer-data-card-container {
+}
+
+.alerts-card-container {
+}
+
+.feedback-card-container {
+}
+
+.financial-overview-card-container {
+}
+
+.project-progress-card-container {
+}
+
+.resource-manage-card-container {
+}
+
+.schedule-card-container {
+}
+
+.service-analytics-card-container {
 }

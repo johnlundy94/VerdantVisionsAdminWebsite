@@ -14,8 +14,8 @@ const muiTheme = createTheme({
       contrastText: "#fbfbfb",
     },
     text: {
-      primary: "#FFFFFF",
-      secondary: "#fbfbfb",
+      primary: "#262626",
+      secondary: "#434343",
     },
   },
   components: {
