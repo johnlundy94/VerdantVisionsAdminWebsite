@@ -4,14 +4,16 @@ import Typography from "@mui/material/Typography";
 
 function QuoteManageCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           Quote Management
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Display the latest quote requests from customers. Include the ability
+          to sort by date, service type, or budget size. You could also add
+          functionality for admins to update the status of a quote, such as
+          "pending," "in progress," or "completed."
         </Typography>
       </CardContent>
     </Card>

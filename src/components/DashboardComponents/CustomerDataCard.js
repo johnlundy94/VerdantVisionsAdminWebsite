@@ -4,14 +4,15 @@ import Typography from "@mui/material/Typography";
 
 function CustomerDataCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           Customer Data
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Keep a searchable and sortable list of customers, with details from
+          the quote form and an overview of their projects. Implement CRUD
+          operations for managing this data.
         </Typography>
       </CardContent>
     </Card>

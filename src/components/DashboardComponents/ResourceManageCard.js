@@ -4,14 +4,14 @@ import Typography from "@mui/material/Typography";
 
 function ResourceManageCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           ResourceManageCard
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Track resources like materials, supplies, and equipment. This might be
+          more backend-heavy but useful for inventory management.
         </Typography>
       </CardContent>
     </Card>

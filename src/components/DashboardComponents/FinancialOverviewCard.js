@@ -4,14 +4,15 @@ import Typography from "@mui/material/Typography";
 
 function FinancialOverviewCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           FinancialOverviewCard
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Show incoming quotes versus confirmed projects to forecast revenue.
+          Include average quote values and conversion rates to help understand
+          financial health.
         </Typography>
       </CardContent>
     </Card>

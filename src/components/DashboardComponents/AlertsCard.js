@@ -4,14 +4,14 @@ import Typography from "@mui/material/Typography";
 
 function AlertsCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           AlertsCard
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Have a notification system that alerts the admin about new quotes,
+          customer inquiries, or action items that need attention.
         </Typography>
       </CardContent>
     </Card>

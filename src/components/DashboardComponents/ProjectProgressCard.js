@@ -4,14 +4,14 @@ import Typography from "@mui/material/Typography";
 
 function ProjectProgressCard() {
   return (
-    <Card sx={{ width: `calc(100% / 12 * 3)` }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           ProjectProgressCard
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Track and update the status of ongoing projects. Include quick views
+          on timelines, assigned workers, and any pending actions.
         </Typography>
       </CardContent>
     </Card>

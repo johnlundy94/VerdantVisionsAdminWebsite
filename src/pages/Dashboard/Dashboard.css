@@ -5,7 +5,9 @@
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  grid-template-columns: repeat(3, 1fr);
   grid-column: 3 / span 10;
+  grid-gap: 1rem;
 }
 
 .quote-manage-card-container {
