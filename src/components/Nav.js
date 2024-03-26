@@ -25,6 +25,7 @@ import WarehouseIcon from "@mui/icons-material/Warehouse";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import { useLocation, useNavigate } from "react-router-dom";
+import LongMenu from "./LongMenu";
 
 const pages = [
   { name: "Dashboard", path: "/", type: "link", icon: HomeIcon },
@@ -108,6 +109,7 @@ function Nav() {
           <Typography variant="h6" noWrap component="div">
             LOGO
           </Typography>
+          <LongMenu />
         </Toolbar>
         <Box sx={{ overflow: "auto" }}>
           <List>

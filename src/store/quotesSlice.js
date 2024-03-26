@@ -2,21 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const quotesSlice = createSlice({
   name: "quotes",
-  initialState: [
-    {
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      services: {
-        landscapeDesign: false,
-        outdoorLivingSpaces: false,
-        irrigation: false,
-      },
-      budget: "",
-      description: "",
-    },
-  ],
+  initialState: [],
   reducers: {
     addQuote: (state, action) => {
       state.push(action.payload);
