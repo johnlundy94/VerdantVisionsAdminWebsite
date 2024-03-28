@@ -24,7 +24,7 @@ import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TimelineIcon from "@mui/icons-material/Timeline";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import LongMenu from "./LongMenu";
 
 const pages = [
@@ -115,7 +115,7 @@ function Nav() {
           <List>
             {pages.map((page, index) => (
               <ListItem key={page.name}>
-                <ListItemButton href={page.path}>
+                <ListItemButton component={Link} to={page.path}>
                   <ListItemIcon>{React.createElement(page.icon)}</ListItemIcon>
                   <ListItemText primary={page.name} />
                 </ListItemButton>

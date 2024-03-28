@@ -24,35 +24,17 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-          </Routes>
-          <Routes>
             <Route path="/alerts" element={<AlertsPage />} />
-          </Routes>
-          <Routes>
             <Route path="/customer-data" element={<CustomerDataPage />} />
-          </Routes>
-          <Routes>
             <Route path="/feedback" element={<FeedbackPage />} />
-          </Routes>
-          <Routes>
             <Route
               path="/financial-overview"
               element={<FinancialOverviewPage />}
             />
-          </Routes>
-          <Routes>
             <Route path="/project-progress" element={<ProjectProgressPage />} />
-          </Routes>
-          <Routes>
             <Route path="/quote-manage" element={<QuoteManagePage />} />
-          </Routes>
-          <Routes>
             <Route path="/resource-manage" element={<ResourceManagePage />} />
-          </Routes>
-          <Routes>
             <Route path="/schedule" element={<SchedulePage />} />
-          </Routes>
-          <Routes>
             <Route
               path="/service-analytics"
               element={<ServiceAnalyticsPage />}

@@ -1,30 +1,22 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AlarmAddIcon from "@mui/icons-material/AlarmAdd";
-
-const options = [
-  "None",
-  "Atria",
-  "Callisto",
-  "Dione",
-  "Ganymede",
-  "Hangouts Call",
-  "Luna",
-  "Oberon",
-  "Phobos",
-  "Pyxis",
-  "Sedna",
-  "Titania",
-  "Triton",
-  "Umbriel",
-];
+import { fetchQuotes } from "../store/quotesSlice";
 
 const ITEM_HEIGHT = 48;
 
 export default function LongMenu() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchQuotes());
+  }, [dispatch]);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const alerts = useSelector((state) => state.alerts);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,15 +52,15 @@ export default function LongMenu() {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
+        {alerts.length > 0 ? (
+          alerts.map((alert, index) => (
+            <MenuItem key={index} onClick={handleClose}>
+              {alert.message}
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem onClick={handleClose}>No Alerts</MenuItem>
+        )}
       </Menu>
     </div>
   );
