@@ -22,6 +22,7 @@ function QuoteManagePage() {
           email={quote.email}
           phone={quote.phone}
           address={quote.address}
+          services={quote.services}
           budget={quote.budget}
           description={quote.description}
         />

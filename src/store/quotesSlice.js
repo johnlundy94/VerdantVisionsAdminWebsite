@@ -20,9 +20,7 @@ export const fetchQuotes = createAsyncThunk(
       );
 
       newQuotes.forEach((quote) => {
-        dispatch(
-          addAlert({ message: `New quote received from ${quote.name}` })
-        );
+        dispatch(addAlert({ message: "New Quote Received" }));
       });
 
       return newQuotes;

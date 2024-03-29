@@ -13,9 +13,26 @@ export default function MainTable({
   email,
   phone,
   address,
+  services,
   budget,
   description,
 }) {
+  const changeCamelCase = (camelCase) => {
+    return camelCase
+      .replace(/([A-Z])/g, " $1")
+      .trim()
+      .replace(
+        /\w\S*/g,
+        (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      );
+  };
+
+  const renderServices = (services) => {
+    return Object.entries(services)
+      .filter(([service, selected]) => selected)
+      .map(([service]) => changeCamelCase(service))
+      .join(". ");
+  };
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -25,6 +42,7 @@ export default function MainTable({
             <TableCell>Email</TableCell>
             <TableCell>Phone Number</TableCell>
             <TableCell>Address</TableCell>
+            <TableCell>Services</TableCell>
             <TableCell>Budget</TableCell>
             <TableCell>Description</TableCell>
           </TableRow>
@@ -40,6 +58,7 @@ export default function MainTable({
             <TableCell>{email}</TableCell>
             <TableCell>{phone}</TableCell>
             <TableCell>{address}</TableCell>
+            <TableCell>{renderServices(services)}</TableCell>
             <TableCell>{budget}</TableCell>
             <TableCell>{description}</TableCell>
           </TableRow>
