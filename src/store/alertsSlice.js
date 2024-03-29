@@ -7,8 +7,11 @@ export const alertsSlice = createSlice({
     addAlert: (state, action) => {
       state.push(action.payload);
     },
+    removeAlert: (state, action) => {
+      return state.filter((_, index) => index !== action.payload);
+    },
   },
 });
 
-export const { addAlert } = alertsSlice.actions;
+export const { addAlert, removeAlert } = alertsSlice.actions;
 export default alertsSlice.reducer;

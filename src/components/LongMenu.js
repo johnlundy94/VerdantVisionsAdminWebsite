@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AlarmAddIcon from "@mui/icons-material/AlarmAdd";
 import { fetchQuotes } from "../store/quotesSlice";
 import { Link } from "react-router-dom";
+import { removeAlert } from "../store/alertsSlice";
 
 const ITEM_HEIGHT = 48;
 
@@ -22,8 +23,14 @@ export default function LongMenu() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleAlertClick = (index) => {
+    dispatch(removeAlert(index));
+    handleClose();
   };
 
   return (
@@ -57,7 +64,7 @@ export default function LongMenu() {
           alerts.map((alert, index) => (
             <MenuItem
               key={index}
-              onClick={handleClose}
+              onClick={() => handleAlertClick(index)}
               component={Link}
               to={"/quote-manage"}
             >
