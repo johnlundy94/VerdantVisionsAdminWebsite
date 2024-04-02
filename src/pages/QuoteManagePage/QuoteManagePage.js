@@ -9,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
-import MainTable from "../../components/MainTable";
+import QuoteManageTable from "../../components/QuoteManageTable";
 
 function QuoteManagePage() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function QuoteManagePage() {
           </TableHead>
           <TableBody>
             {quotes.map((quote) => (
-              <MainTable
+              <QuoteManageTable
                 key={quote.id}
                 name={quote.name}
                 email={quote.email}

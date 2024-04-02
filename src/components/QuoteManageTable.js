@@ -1,8 +1,9 @@
 import * as React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
+import RowActionsMenu from "./RowActionsMenu";
 
-export default function MainTable({
+export default function QuoteManageTable({
   id,
   name,
   email,
@@ -28,11 +29,31 @@ export default function MainTable({
       .map(([service]) => changeCamelCase(service))
       .join(". ");
   };
+
+  const handleEmail = () => {
+    // Logic to email the customer
+  };
+
+  const handleDelete = () => {
+    // Logic to delete the quote request
+  };
+
+  const handleAccept = () => {
+    // Logic to accept the quote
+  };
+
   return (
     <TableRow
       key={id}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
+      <TableCell align="right">
+        <RowActionsMenu
+          onEmail={handleEmail}
+          onDelete={handleDelete}
+          onAccept={handleAccept}
+        />
+      </TableCell>
       <TableCell component="th" scope="row">
         {name}
       </TableCell>
