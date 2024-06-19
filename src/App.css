@@ -1,9 +1,11 @@
 .App {
   text-align: center;
   text-rendering: optimizeSpeed;
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(12, 1fr);
   background-color: #f3f5e7;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .nav-section {

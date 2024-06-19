@@ -4,7 +4,13 @@ import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const RowActionsMenu = ({ onEmail, onDelete, onAccept }) => {
+const RowActionsMenu = ({
+  onEmail,
+  onDelete,
+  onAccept,
+  quoteId,
+  createdAt,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -43,7 +49,7 @@ const RowActionsMenu = ({ onEmail, onDelete, onAccept }) => {
       >
         <MenuItem
           onClick={() => {
-            onAccept();
+            onAccept(quoteId);
             handleClose();
           }}
         >
@@ -51,7 +57,7 @@ const RowActionsMenu = ({ onEmail, onDelete, onAccept }) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            onEmail();
+            onEmail(quoteId);
             handleClose();
           }}
         >
@@ -59,7 +65,8 @@ const RowActionsMenu = ({ onEmail, onDelete, onAccept }) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            onDelete();
+            console.log("Delete clicked for quoteId:", quoteId);
+            onDelete(quoteId, createdAt);
             handleClose();
           }}
         >

@@ -3,66 +3,45 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import RowActionsMenu from "./RowActionsMenu";
 
-export default function QuoteManageTable({
-  id,
-  name,
-  email,
-  phone,
-  address,
-  services,
-  budget,
-  description,
-}) {
-  const changeCamelCase = (camelCase) => {
-    return camelCase
-      .replace(/([A-Z])/g, " $1")
-      .trim()
-      .replace(
-        /\w\S*/g,
-        (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-      );
-  };
+const formatServiceName = (serviceName) => {
+  return serviceName.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
+    return str.toUpperCase();
+  });
+};
 
-  const renderServices = (services) => {
-    return Object.entries(services)
-      .filter(([service, selected]) => selected)
-      .map(([service]) => changeCamelCase(service))
-      .join(". ");
-  };
-
-  const handleEmail = () => {
-    // Logic to email the customer
-  };
-
-  const handleDelete = () => {
-    // Logic to delete the quote request
-  };
-
-  const handleAccept = () => {
-    // Logic to accept the quote
-  };
+export default function QuoteManageTable({ quotes, onDelete }) {
+  console.log("Rendering QuoteManageTable with quotes: ", quotes);
 
   return (
-    <TableRow
-      key={id}
-      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-    >
-      <TableCell align="right">
-        <RowActionsMenu
-          onEmail={handleEmail}
-          onDelete={handleDelete}
-          onAccept={handleAccept}
-        />
-      </TableCell>
-      <TableCell component="th" scope="row">
-        {name}
-      </TableCell>
-      <TableCell>{email}</TableCell>
-      <TableCell>{phone}</TableCell>
-      <TableCell>{address}</TableCell>
-      <TableCell>{renderServices(services)}</TableCell>
-      <TableCell>{budget}</TableCell>
-      <TableCell>{description}</TableCell>
-    </TableRow>
+    <>
+      {quotes.map((quote) => (
+        <TableRow
+          key={quote.id}
+          sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+        >
+          <TableCell align="right">
+            <RowActionsMenu
+              quoteId={quote.id}
+              createdAt={quote.CreatedAt}
+              onDelete={onDelete}
+            />
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {quote.name}
+          </TableCell>
+          <TableCell>{quote.email}</TableCell>
+          <TableCell>{quote.phone}</TableCell>
+          <TableCell>{quote.address}</TableCell>
+          <TableCell>
+            {Object.keys(quote.services)
+              .filter((key) => quote.services[key])
+              .map(formatServiceName)
+              .join(", ")}
+          </TableCell>
+          <TableCell>{quote.budget}</TableCell>
+          <TableCell>{quote.description}</TableCell>
+        </TableRow>
+      ))}
+    </>
   );
 }

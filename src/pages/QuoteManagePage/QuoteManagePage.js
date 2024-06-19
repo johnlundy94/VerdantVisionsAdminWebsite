@@ -1,7 +1,5 @@
 import "./QuoteManagePage.css";
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchQuotes } from "../../store/quotesSlice";
+import React, { useContext } from "react";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
@@ -10,22 +8,32 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import QuoteManageTable from "../../components/QuoteManageTable";
+import { WebSocketContext } from "../../WebSocketContext";
 
 function QuoteManagePage() {
-  const dispatch = useDispatch();
-  const quotes = useSelector((state) => state.quotes);
+  const { quotes, setQuotes, ws } = useContext(WebSocketContext);
 
-  useEffect(() => {
-    dispatch(fetchQuotes());
-  }, [dispatch]);
+  const handleDelete = async (quoteId, createdAt) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(
+        JSON.stringify({
+          action: "deleteQuote",
+          data: { id: quoteId, CreatedAt: createdAt },
+        })
+      );
+    } else {
+      console.error("WebSocket is not open");
+    }
+  };
 
   return (
     <div className="quote-manage-page-container">
-      <h1>Quote Management</h1>
+      <h1 className="quote-manage-title">Quote Management</h1>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>Options</TableCell>
               <TableCell>Customer Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Phone Number</TableCell>
@@ -36,18 +44,7 @@ function QuoteManagePage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {quotes.map((quote) => (
-              <QuoteManageTable
-                key={quote.id}
-                name={quote.name}
-                email={quote.email}
-                phone={quote.phone}
-                address={quote.address}
-                services={quote.services}
-                budget={quote.budget}
-                description={quote.description}
-              />
-            ))}
+            <QuoteManageTable quotes={quotes} onDelete={handleDelete} />
           </TableBody>
         </Table>
       </TableContainer>
