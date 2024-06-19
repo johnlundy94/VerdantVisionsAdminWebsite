@@ -18,9 +18,9 @@ export const WebSocketProvider = ({ children }) => {
       return;
     }
 
-    ws.current = new WebSocket(
-      "wss://sp8bz6x76k.execute-api.us-east-2.amazonaws.com/dev/"
-    );
+    const websocketUrl = process.env.REACT_APP_WS_API_GATEWAY_URL;
+
+    ws.current = new WebSocket(websocketUrl);
 
     ws.current.onopen = () => {
       console.log("WebSocket Connected");
