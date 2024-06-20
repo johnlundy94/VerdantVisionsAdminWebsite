@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useRef } from "react";
+import config from "./config";
 
 export const WebSocketContext = createContext();
 
@@ -18,9 +19,8 @@ export const WebSocketProvider = ({ children }) => {
       return;
     }
 
-    const websocketUrl = process.env.REACT_APP_WS_API_GATEWAY_URL;
-
-    ws.current = new WebSocket(websocketUrl);
+    console.log("WebSocket URL from config:", config.websocketUrl);
+    ws.current = new WebSocket(config.websocketUrl);
 
     ws.current.onopen = () => {
       console.log("WebSocket Connected");
