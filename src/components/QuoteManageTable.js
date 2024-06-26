@@ -3,12 +3,6 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import RowActionsMenu from "./RowActionsMenu";
 
-const formatServiceName = (serviceName) => {
-  return serviceName.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
-    return str.toUpperCase();
-  });
-};
-
 export default function QuoteManageTable({ quotes, onDelete }) {
   console.log("Rendering QuoteManageTable with quotes: ", quotes);
 
@@ -20,11 +14,7 @@ export default function QuoteManageTable({ quotes, onDelete }) {
           sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
         >
           <TableCell align="right">
-            <RowActionsMenu
-              quoteId={quote.id}
-              createdAt={quote.CreatedAt}
-              onDelete={onDelete}
-            />
+            <RowActionsMenu quote={quote} onDelete={onDelete} />
           </TableCell>
           <TableCell component="th" scope="row">
             {quote.name}
@@ -35,7 +25,11 @@ export default function QuoteManageTable({ quotes, onDelete }) {
           <TableCell>
             {Object.keys(quote.services)
               .filter((key) => quote.services[key])
-              .map(formatServiceName)
+              .map((serviceName) =>
+                serviceName
+                  .replace(/([A-Z])/g, " $1")
+                  .replace(/^./, (str) => str.toUpperCase())
+              )
               .join(", ")}
           </TableCell>
           <TableCell>{quote.budget}</TableCell>

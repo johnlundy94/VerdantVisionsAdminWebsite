@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MessageModal from "./MessageModal";
 
-const RowActionsMenu = ({ onMessage, onDelete, quoteId, createdAt }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const RowActionsMenu = ({ onDelete, quote }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -14,6 +16,15 @@ const RowActionsMenu = ({ onMessage, onDelete, quoteId, createdAt }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleOpenMessageModal = () => {
+    setIsMessageModalOpen(true);
+    handleClose();
+  };
+
+  const handleCloseMessageModal = () => {
+    setIsMessageModalOpen(false);
   };
 
   return (
@@ -41,24 +52,22 @@ const RowActionsMenu = ({ onMessage, onDelete, quoteId, createdAt }) => {
           horizontal: "left",
         }}
       >
+        <MenuItem onClick={handleOpenMessageModal}>Messages</MenuItem>
         <MenuItem
           onClick={() => {
-            onMessage(quoteId);
-            handleClose();
-          }}
-        >
-          Messages
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            console.log("Delete clicked for quoteId:", quoteId);
-            onDelete(quoteId, createdAt);
+            console.log("Delete clicked for quoteId:", quote.id);
+            onDelete(quote.id, quote.createdAt);
             handleClose();
           }}
         >
           Delete Quote
         </MenuItem>
       </Menu>
+      <MessageModal
+        open={isMessageModalOpen}
+        onClose={handleCloseMessageModal}
+        quote={quote}
+      />
     </>
   );
 };
