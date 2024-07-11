@@ -6,6 +6,7 @@ export const WebSocketContext = createContext();
 export const WebSocketProvider = ({ children }) => {
   const [alerts, setAlerts] = useState([]);
   const [quotes, setQuotes] = useState([]);
+  const [messages, setMessages] = useState([]);
   const ws = useRef(null);
   const reconnectInterval = useRef(null);
 
@@ -79,9 +80,13 @@ export const WebSocketProvider = ({ children }) => {
           return [...newQuotes, ...prevQuotes];
         });
       } else if (message.message === "Quote deleted successfully") {
+        console.log("Quote deleted successfully, quoteId:", message.quoteId);
         setQuotes((prevQuotes) => {
           return prevQuotes.filter((quote) => quote.id !== message.quoteId);
         });
+      } else if (message.type === "newMessage") {
+        console.log("New message received:", message.message);
+        setMessages((prevMessages) => [message.message, ...prevMessages]);
       } else {
         console.error("Received non-quote message or error:", message);
       }
@@ -127,7 +132,15 @@ export const WebSocketProvider = ({ children }) => {
 
   return (
     <WebSocketContext.Provider
-      value={{ ws: ws.current, quotes, setQuotes, alerts, handleAlertClick }}
+      value={{
+        ws: ws.current,
+        quotes,
+        setQuotes,
+        messages,
+        setMessages,
+        alerts,
+        handleAlertClick,
+      }}
     >
       {children}
     </WebSocketContext.Provider>

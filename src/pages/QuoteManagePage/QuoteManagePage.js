@@ -11,10 +11,16 @@ import QuoteManageTable from "../../components/QuoteManageTable";
 import { WebSocketContext } from "../../WebSocketContext";
 
 function QuoteManagePage() {
-  const { quotes, setQuotes, ws } = useContext(WebSocketContext);
+  const { quotes, setQuotes, ws, messages } = useContext(WebSocketContext);
 
   const handleDelete = async (quoteId, createdAt) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
+      console.log(
+        "Sending delete request for quoteId:",
+        quoteId,
+        "createdAt:",
+        createdAt
+      );
       ws.send(
         JSON.stringify({
           action: "deleteQuote",

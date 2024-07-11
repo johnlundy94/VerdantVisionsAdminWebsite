@@ -55,8 +55,13 @@ const RowActionsMenu = ({ onDelete, quote }) => {
         <MenuItem onClick={handleOpenMessageModal}>Messages</MenuItem>
         <MenuItem
           onClick={() => {
-            console.log("Delete clicked for quoteId:", quote.id);
-            onDelete(quote.id, quote.createdAt);
+            console.log(
+              "Delete clicked for quoteId:",
+              quote.id,
+              "createdAt:",
+              quote.CreatedAt
+            );
+            onDelete(quote.id, quote.CreatedAt);
             handleClose();
           }}
         >

@@ -10,7 +10,31 @@ import {
   ListItemText,
   TextField,
 } from "@mui/material";
-import { sendEmail, fetchEmails } from "../mailjet";
+
+const fetchEmails = async (email) => {
+  try {
+    const response = await fetch(
+      `https://1nqujh1bi2.execute-api.us-east-2.amazonaws.com/dev/messages/${email}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.ok) {
+      const emails = await response.json();
+      return emails;
+    } else {
+      console.error("Failed to fetch emails");
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching emails:", error);
+    return [];
+  }
+};
 
 const MessageModal = ({ open, onClose, quote }) => {
   const [messages, setMessages] = useState([]);
@@ -24,7 +48,7 @@ const MessageModal = ({ open, onClose, quote }) => {
     }
   }, [quote]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim() !== "") {
       const message = {
         quoteId: quote.id,
@@ -32,10 +56,34 @@ const MessageModal = ({ open, onClose, quote }) => {
         text: newMessage,
         timestamp: new Date(),
       };
-      sendEmail(quote.email, "New Message from Admin", newMessage).then(() => {
-        setMessages([...messages, message]);
-        setNewMessage("");
-      });
+
+      try {
+        const response = await fetch(
+          "https://1nqujh1bi2.execute-api.us-east-2.amazonaws.com/dev/messages",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              clientId: quote.id,
+              message: newMessage,
+              email: quote.email,
+            }),
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log(result);
+          setMessages([...messages, message]);
+          setNewMessage("");
+        } else {
+          console.error("Failed to send message");
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+      }
     }
   };
 
@@ -48,7 +96,7 @@ const MessageModal = ({ open, onClose, quote }) => {
             <ListItem key={index}>
               <ListItemText
                 primary={message.text}
-                secondary={message.timestamp.toString()}
+                secondary={new Date(message.timestamp).toLocaleString()}
               />
             </ListItem>
           ))}
