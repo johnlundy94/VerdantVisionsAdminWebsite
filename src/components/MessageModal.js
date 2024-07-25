@@ -67,7 +67,7 @@ const MessageModal = ({ open, onClose, quote }) => {
             },
             body: JSON.stringify({
               clientId: quote.id,
-              message: newMessage,
+              message: `${newMessage}\n\n<!-- ClientId: ${quote.id} -->`,
               email: quote.email,
             }),
           }
