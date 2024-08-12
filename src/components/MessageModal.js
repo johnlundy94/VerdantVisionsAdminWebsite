@@ -1,4 +1,3 @@
-// MessageModal.js
 import React, { useState, useEffect, useContext } from "react";
 import {
   Dialog,
@@ -42,7 +41,7 @@ const fetchEmails = async (email) => {
 const cleanMessageContent = (content) => {
   // Remove quoted email text and clientId tags
   const mainContent = content.split(
-    /On [a-zA-Z]{3}, [a-zA-Z]{3} \d{1,2}, \d{4} at \d{1,2}:\d{2}/
+    /On [a-zA-Z]{3}, [a-zA-Z]{3} \d{1,2}, \d{4} at \d{1,2}/
   )[0];
   const cleanedContent = mainContent
     .replace(/<!-- ClientId: [\w-]+ -->/g, "")
@@ -71,21 +70,19 @@ const MessageModal = ({ open, onClose, quote }) => {
   useEffect(() => {
     if (quote) {
       const relevantMessages = messages
-        .filter(
-          (msg) => msg.email.includes(quote.email) // updated to match the email format
-        )
+        .filter((msg) => msg.email === quote.email)
         .map((msg) => ({
           ...msg,
           message: cleanMessageContent(msg.message),
         }));
 
-      setLocalMessages((prevMessages) => [
-        ...relevantMessages.filter(
+      setLocalMessages((prevMessages) => {
+        const newMessages = relevantMessages.filter(
           (msg) =>
             !prevMessages.some((prevMsg) => prevMsg.messageId === msg.messageId)
-        ),
-        ...prevMessages,
-      ]);
+        );
+        return [...newMessages, ...prevMessages];
+      });
     }
   }, [messages, quote]);
 
@@ -117,13 +114,7 @@ const MessageModal = ({ open, onClose, quote }) => {
         if (response.ok) {
           const result = await response.json();
           console.log(result);
-          setLocalMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              ...message,
-              message: cleanMessageContent(newMessage),
-            },
-          ]);
+          // Do not add message to local state here
           setNewMessage("");
         } else {
           console.error("Failed to send message");

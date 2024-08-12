@@ -86,7 +86,15 @@ export const WebSocketProvider = ({ children }) => {
         });
       } else if (message.message === "New message retrieved") {
         console.log("New message received:", message.messageData);
-        setMessages((prevMessages) => [message.messageData, ...prevMessages]);
+        setMessages((prevMessages) => {
+          const messageExists = prevMessages.some(
+            (msg) => msg.messageId === message.messageData.messageId
+          );
+          if (messageExists) {
+            return prevMessages;
+          }
+          return [message.messageData, ...prevMessages];
+        });
       } else {
         console.error("Received non-quote message or error:", message);
       }
