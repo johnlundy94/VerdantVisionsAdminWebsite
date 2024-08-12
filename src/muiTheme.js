@@ -1,3 +1,4 @@
+// muiTheme.js
 import { createTheme } from "@mui/material/styles";
 
 const muiTheme = createTheme({
@@ -51,8 +52,3 @@ const muiTheme = createTheme({
 });
 
 export default muiTheme;
-
-// Tetradic color combination for: #A7BC5B
-// #5BBCA1
-// #705BBC
-// #BC5B77

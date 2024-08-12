@@ -1,0 +1,29 @@
+.client-message {
+  text-align: left;
+  background-color: #e5e5ea;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  max-width: 80%;
+}
+
+.admin-message {
+  text-align: right;
+  background-color: #007aff;
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  align-self: flex-end;
+  max-width: 80%;
+  margin-left: auto;
+}
+
+.client-message .MuiListItemText-primary {
+  color: black;
+}
+
+.admin-message .MuiListItemText-primary {
+  color: white;
+}
