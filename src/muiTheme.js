@@ -1,22 +1,26 @@
-// muiTheme.js
 import { createTheme } from "@mui/material/styles";
 
 const muiTheme = createTheme({
-  breakpoints: {
-    values: {
-      sm: 1127,
-    },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   },
   palette: {
     primary: {
-      main: "#A7BC5B",
-      light: "#FFFFFF",
-      dark: "#8da242",
-      contrastText: "#fbfbfb",
+      main: "#1E1E2F",
+      light: "#28293D",
+      dark: "#0E0E1A",
+      contrastText: "#FFFFFF",
+    },
+    secondary: {
+      main: "#434343",
     },
     text: {
-      primary: "#262626",
-      secondary: "#434343",
+      primary: "#E0E0E0",
+      secondary: "#A0A0A0",
+    },
+    background: {
+      default: "#121212",
+      paper: "#1E1E2F",
     },
   },
   components: {
@@ -24,7 +28,7 @@ const muiTheme = createTheme({
       styleOverrides: {
         paper: {
           color: "#FFFFFF",
-          backgroundColor: "#A7BC5B",
+          backgroundColor: "#1E1E2F",
         },
       },
     },
@@ -41,11 +45,25 @@ const muiTheme = createTheme({
           "&.Mui-selected .MuiBottomNavigationAction-label": {
             color: "#FFFFFF",
           },
-          backgroundColor: "#A7BC5B",
+          backgroundColor: "#1E1E2F",
         },
       },
       defaultProps: {
         showLabels: true,
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: "#E0E0E0",
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: "#E0E0E0",
+        },
       },
     },
   },

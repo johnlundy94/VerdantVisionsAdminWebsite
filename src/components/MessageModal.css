@@ -27,3 +27,15 @@
 .admin-message .MuiListItemText-primary {
   color: white;
 }
+
+.dialog-content {
+  max-height: 60vh; /* Adjust the height as necessary */
+  overflow-y: auto;
+}
+
+.message-modal {
+  min-width: 500px; /* Adjust the width as necessary */
+  max-width: 700px; /* Adjust the width as necessary */
+  min-height: 400px; /* Adjust the height as necessary */
+  max-height: 80vh; /* Adjust the height as necessary */
+}

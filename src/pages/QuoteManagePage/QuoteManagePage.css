@@ -4,12 +4,16 @@
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
-  grid-column: 1 / span 12;
-  grid-template-rows: auto;
+  background-color: #28293d;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .quote-manage-title {
   margin-bottom: 20px;
+  font-size: 2rem;
+  color: #e0e0e0;
 }
 
 .MuiTable-root {
@@ -17,9 +21,25 @@
 }
 
 .MuiPaper-root {
+  background-color: #1e1e2f;
+  color: #e0e0e0;
   box-shadow: none;
 }
 
 .MuiTableCell-root {
   padding: 8px;
+}
+
+.MuiTableHead-root {
+  background-color: #0e0e1a;
+}
+
+.MuiTableCell-head {
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+.MuiTableRow-root:hover {
+  background-color: #28293d;
+  transition: background-color 0.3s ease;
 }

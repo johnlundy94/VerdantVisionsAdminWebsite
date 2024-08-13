@@ -70,19 +70,19 @@ const MessageModal = ({ open, onClose, quote }) => {
   useEffect(() => {
     if (quote) {
       const relevantMessages = messages
-        .filter((msg) => msg.email === quote.email)
+        .filter((msg) => msg.email.includes(quote.email)) // updated to match the email format
         .map((msg) => ({
           ...msg,
           message: cleanMessageContent(msg.message),
         }));
 
-      setLocalMessages((prevMessages) => {
-        const newMessages = relevantMessages.filter(
+      setLocalMessages((prevMessages) => [
+        ...relevantMessages.filter(
           (msg) =>
             !prevMessages.some((prevMsg) => prevMsg.messageId === msg.messageId)
-        );
-        return [...newMessages, ...prevMessages];
-      });
+        ),
+        ...prevMessages,
+      ]);
     }
   }, [messages, quote]);
 
@@ -130,7 +130,7 @@ const MessageModal = ({ open, onClose, quote }) => {
   );
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>Messages with {quote.name}</DialogTitle>
       <DialogContent>
         <List>

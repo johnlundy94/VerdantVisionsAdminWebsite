@@ -28,6 +28,7 @@ export const WebSocketProvider = ({ children }) => {
       clearInterval(reconnectInterval.current); // Clear any reconnection attempts
       reconnectInterval.current = null;
       ws.current.send(JSON.stringify({ action: "getQuotes" }));
+      ws.current.send(JSON.stringify({ action: "getMessages" })); // Fetch messages upon connection
     };
 
     ws.current.onerror = (event) => {
@@ -94,6 +95,14 @@ export const WebSocketProvider = ({ children }) => {
             return prevMessages;
           }
           return [message.messageData, ...prevMessages];
+        });
+      } else if (Array.isArray(message) && message[0]?.type === "message") {
+        console.log("Message identified as an array of messages:", message);
+        setMessages((prevMessages) => {
+          const newMessages = message.filter(
+            (msg) => !prevMessages.some((m) => m.messageId === msg.messageId)
+          );
+          return [...newMessages, ...prevMessages];
         });
       } else {
         console.error("Received non-quote message or error:", message);
