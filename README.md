@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Verdant Visions Admin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Verdant Visions Admin is an SAAS addon to the client-facing site, Verdant Visions Landscaping. This admin dashboard allows admins to manage and communicate with clients who submit quotes via the Verdant Visions Landscaping website. The system facilitates real-time communication and efficient quote management through a combination of React, Material UI, and AWS services.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Real-Time Quote Management**: Receive and manage quote submissions in real-time.
+- **Messaging System**: Communicate directly with clients via email through the integrated messaging system.
+- **Live Communication**: Utilizes WebSocket connections to provide live updates and seamless interaction between admin and clients.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
 
-### `npm test`
+- React
+- Material UI
+- Axios
+- Express
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
 
-### `npm run build`
+- AWS Lambda
+- AWS DynamoDB
+- AWS API Gateway
+- SendGrid API
+- Mailjet API
+- WebSocket
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   ```
+2. Navigate to the project directory
+   ```bash
+   cd landscape-admin
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the application:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Welcome to the Verdant Visions Admin Dashboard! This site is an SAAS addon to the client-facing site Verdant Visions Landscaping. To correctly use this application, you must fill out the quote request submission form on the "Quote" page of the client website. You must have access to the email used when filling out this form. This admin dashboard uses that address in the messaging system to facilitate communication between your email (the client email) and the admin's messaging system.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Feel free to use the app to check out the live communication. This app is a proof of concept for my first dive into SAAS functionality, and additional features will be added over time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API Documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### SendGrid API
 
-## Learn More
+SendGrid is used to parse incoming emails and integrate them into the admin messaging system.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### SendGrid API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Mailjet API
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is licensed under the MIT License.
 
-### Analyzing the Bundle Size
+## Links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Client Website: [Verdant Visions Landscaping]()
+- GitHub Repo: [GitHub Repo](https://github.com/johnlundy94/landscape-admin)
 
-### Making a Progressive Web App
+## Contact Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+For any inquiries, please contact John Lundy at [fullstacklundy@gmail.com].
 
-### Advanced Configuration
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React: For providing the framework to build a sleek UI.
+- Material UI: For offering a comprehensive suite of UI components.
+- AWS: For powering the backend infrastructure.
+- SendGrid: For email parsing and integration.
+- Mailjet: For email sending capabilities.
