@@ -6,6 +6,7 @@
   margin-bottom: 10px;
   align-self: flex-start;
   max-width: 80%;
+  display: flex;
 }
 
 .admin-message {
@@ -18,6 +19,7 @@
   align-self: flex-end;
   max-width: 80%;
   margin-left: auto;
+  display: flex;
 }
 
 .client-message .MuiListItemText-primary {
@@ -29,13 +31,13 @@
 }
 
 .dialog-content {
-  max-height: 60vh; /* Adjust the height as necessary */
+  max-height: 60vh;
   overflow-y: auto;
 }
 
 .message-modal {
-  min-width: 500px; /* Adjust the width as necessary */
-  max-width: 700px; /* Adjust the width as necessary */
-  min-height: 400px; /* Adjust the height as necessary */
-  max-height: 80vh; /* Adjust the height as necessary */
+  min-width: 500px;
+  max-width: 700px;
+  min-height: 400px;
+  max-height: 80vh;
 }

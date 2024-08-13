@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { ThemeProvider, AppBar, Toolbar, Typography } from "@mui/material";
 import muiTheme from "./muiTheme";
 import QuoteManagePage from "./pages/QuoteManagePage/QuoteManagePage";
 import LawnMower from "@mui/icons-material/Agriculture";
+import InfoModal from "./components/InfoModal";
 
 function App() {
+  const [isModalOpen, setModalOpen] = useState(true);
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  useEffect(() => {
+    setModalOpen(true); // Automatically show the modal when the app loads
+  }, []);
+
   return (
     <div className="App">
       <ThemeProvider theme={muiTheme}>
@@ -27,6 +38,7 @@ function App() {
             &copy; {new Date().getFullYear()} Admin Dashboard
           </Typography>
         </footer>
+        <InfoModal open={isModalOpen} handleClose={handleModalClose} />
       </ThemeProvider>
     </div>
   );

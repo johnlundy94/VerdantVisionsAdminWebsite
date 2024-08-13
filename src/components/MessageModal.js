@@ -9,9 +9,10 @@ import {
   ListItem,
   ListItemText,
   TextField,
+  useTheme,
 } from "@mui/material";
 import { WebSocketContext } from "../WebSocketContext";
-import "./MessageModal.css"; // Import the custom CSS file
+import "./MessageModal.css";
 
 const fetchEmails = async (email) => {
   try {
@@ -39,7 +40,6 @@ const fetchEmails = async (email) => {
 };
 
 const cleanMessageContent = (content) => {
-  // Remove quoted email text and clientId tags
   const mainContent = content.split(
     /On [a-zA-Z]{3}, [a-zA-Z]{3} \d{1,2}, \d{4} at \d{1,2}/
   )[0];
@@ -53,6 +53,7 @@ const MessageModal = ({ open, onClose, quote }) => {
   const { messages } = useContext(WebSocketContext);
   const [localMessages, setLocalMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const theme = useTheme();
 
   useEffect(() => {
     if (quote) {
@@ -70,7 +71,7 @@ const MessageModal = ({ open, onClose, quote }) => {
   useEffect(() => {
     if (quote) {
       const relevantMessages = messages
-        .filter((msg) => msg.email.includes(quote.email)) // updated to match the email format
+        .filter((msg) => msg.email.includes(quote.email))
         .map((msg) => ({
           ...msg,
           message: cleanMessageContent(msg.message),
@@ -114,7 +115,6 @@ const MessageModal = ({ open, onClose, quote }) => {
         if (response.ok) {
           const result = await response.json();
           console.log(result);
-          // Do not add message to local state here
           setNewMessage("");
         } else {
           console.error("Failed to send message");
@@ -131,23 +131,34 @@ const MessageModal = ({ open, onClose, quote }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle>Messages with {quote.name}</DialogTitle>
+      <DialogTitle
+        style={{
+          fontFamily: theme.typography.h2.fontFamily,
+          fontWeight: theme.typography.h2.fontWeight,
+        }}
+      >
+        Messages with {quote.name}
+      </DialogTitle>
       <DialogContent>
         <List>
           {sortedMessages.map((message, index) => (
             <ListItem
               key={index}
               className={
-                message.email.includes(
-                  "admin@verdantvisionslandscapingadmin.com"
-                )
-                  ? "admin-message"
-                  : "client-message"
+                message.direction === "inbound"
+                  ? "client-message"
+                  : "admin-message"
               }
             >
               <ListItemText
                 primary={message.message || message.text}
                 secondary={new Date(message.timestamp).toLocaleString()}
+                primaryTypographyProps={{
+                  style: { fontFamily: theme.typography.body1.fontFamily },
+                }}
+                secondaryTypographyProps={{
+                  style: { fontFamily: theme.typography.body1.fontFamily },
+                }}
               />
             </ListItem>
           ))}
@@ -164,8 +175,17 @@ const MessageModal = ({ open, onClose, quote }) => {
               handleSendMessage();
             }
           }}
+          InputProps={{
+            style: { fontFamily: theme.typography.body1.fontFamily },
+          }}
         />
-        <Button onClick={handleSendMessage} color="primary">
+        <Button
+          onClick={handleSendMessage}
+          style={{
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
+          }}
+        >
           Send
         </Button>
       </DialogActions>

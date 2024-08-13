@@ -2,7 +2,27 @@ import { createTheme } from "@mui/material/styles";
 
 const muiTheme = createTheme({
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Poppins", sans-serif',
+    h1: {
+      fontFamily: '"Poppins", sans-serif',
+      fontWeight: 700,
+    },
+    h2: {
+      fontFamily: '"Poppins", sans-serif',
+      fontWeight: 600,
+    },
+    h3: {
+      fontFamily: '"Poppins", sans-serif',
+      fontWeight: 500,
+    },
+    body1: {
+      fontFamily: '"Poppins", sans-serif',
+      fontWeight: 400,
+    },
+    button: {
+      fontFamily: '"Poppins", sans-serif',
+      fontWeight: 500,
+    },
   },
   palette: {
     primary: {
