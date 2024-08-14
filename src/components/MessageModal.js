@@ -17,7 +17,7 @@ import "./MessageModal.css";
 const fetchEmails = async (email) => {
   try {
     const response = await fetch(
-      `https://1nqujh1bi2.execute-api.us-east-2.amazonaws.com/dev/messages/${email}`,
+      `${process.env.REACT_APP_API_URL}/messages/${email}`,
       {
         method: "GET",
         headers: {
@@ -98,7 +98,7 @@ const MessageModal = ({ open, onClose, quote }) => {
 
       try {
         const response = await fetch(
-          "https://1nqujh1bi2.execute-api.us-east-2.amazonaws.com/dev/messages",
+          `${process.env.REACT_APP_API_URL}/messages`,
           {
             method: "POST",
             headers: {
