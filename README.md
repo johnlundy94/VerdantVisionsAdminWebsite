@@ -71,7 +71,7 @@ This project is licensed under the MIT License.
 
 ## Links
 
-- Client Website: [Verdant Visions Landscaping]()
+- Client Website: [Verdant Visions Landscaping](https://verdantvisionslandscapingadmin.com/)
 - GitHub Repo: [GitHub Repo](https://github.com/johnlundy94/landscape-admin)
 
 ## Contact Information

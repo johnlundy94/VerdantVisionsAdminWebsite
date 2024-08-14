@@ -14,7 +14,7 @@ function App() {
   };
 
   useEffect(() => {
-    setModalOpen(true); // Automatically show the modal when the app loads
+    setModalOpen(true);
   }, []);
 
   return (

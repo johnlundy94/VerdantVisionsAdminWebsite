@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useRef } from "react";
 import config from "./config";
-// new build
 export const WebSocketContext = createContext();
 
 export const WebSocketProvider = ({ children }) => {
@@ -25,10 +24,10 @@ export const WebSocketProvider = ({ children }) => {
 
     ws.current.onopen = () => {
       console.log("WebSocket Connected");
-      clearInterval(reconnectInterval.current); // Clear any reconnection attempts
+      clearInterval(reconnectInterval.current);
       reconnectInterval.current = null;
       ws.current.send(JSON.stringify({ action: "getQuotes" }));
-      ws.current.send(JSON.stringify({ action: "getMessages" })); // Fetch messages upon connection
+      ws.current.send(JSON.stringify({ action: "getMessages" }));
     };
 
     ws.current.onerror = (event) => {
@@ -111,7 +110,7 @@ export const WebSocketProvider = ({ children }) => {
 
     ws.current.onclose = () => {
       console.log("WebSocket Closed");
-      reconnectWebSocket(); // Attempt to reconnect
+      reconnectWebSocket();
     };
   };
 
@@ -120,12 +119,11 @@ export const WebSocketProvider = ({ children }) => {
       reconnectInterval.current = setInterval(() => {
         console.log("Attempting to reconnect WebSocket...");
         connectWebSocket();
-      }, 5000); // Attempt to reconnect every 5 seconds
+      }, 5000);
     }
   };
 
   useEffect(() => {
-    // Ensure any existing WebSocket connection is closed
     if (ws.current) {
       console.log("Cleaning up existing WebSocket connection on mount");
       ws.current.close();
@@ -139,7 +137,7 @@ export const WebSocketProvider = ({ children }) => {
         ws.current.close();
         ws.current = null;
       }
-      clearInterval(reconnectInterval.current); // Clear any ongoing reconnection attempts
+      clearInterval(reconnectInterval.current);
     };
   }, []);
 
