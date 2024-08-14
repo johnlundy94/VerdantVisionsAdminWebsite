@@ -16,7 +16,7 @@ const InfoModal = ({ open, handleClose }) => {
           bgcolor: theme.palette.background.paper,
           boxShadow: 24,
           p: 4,
-          color: theme.palette.text.primary, // Apply the primary text color
+          color: theme.palette.text.primary,
         }}
       >
         <Typography variant="h6" component="h2">
@@ -25,11 +25,22 @@ const InfoModal = ({ open, handleClose }) => {
         <Typography sx={{ mt: 2 }}>
           This site is an SAAS addon to the client-facing site Verdant Visions
           Landscaping. To correctly use this application, you must fill out the
-          quote request submission form on the "Quote" page of the client
-          website. You must have access to the email used when filling out this
-          form. This admin dashboard uses that address in the messaging system
-          to facilitate communication between your email (the client email) and
-          the admin's messaging system.
+          quote request submission form on the{" "}
+          <a
+            href="https://www.verdantvisionslandscaping.com/quote"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: theme.palette.text.primary,
+              textDecoration: "underline",
+            }}
+          >
+            Quote
+          </a>{" "}
+          page of the client website. You must have access to the email used
+          when filling out this form. This admin dashboard uses that address in
+          the messaging system to facilitate communication between your email
+          (the client email) and the admin's messaging system.
         </Typography>
         <Typography sx={{ mt: 2 }}>
           Feel free to use the app to check out the live communication. This app
