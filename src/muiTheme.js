@@ -86,6 +86,15 @@ const muiTheme = createTheme({
         },
       },
     },
+    MuiBadge: {
+      styleOverrides: {
+        badge: {
+          backgroundColor: "red",
+          color: "white",
+          fontSize: "0.75rem",
+        },
+      },
+    },
   },
 });
 
