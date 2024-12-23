@@ -51,7 +51,7 @@ To run the project locally:
 
 ## Usage
 
-Welcome to the Verdant Visions Admin Dashboard! This site is an SAAS addon to the client-facing site Verdant Visions Landscaping. To correctly use this application, you must fill out the quote request submission form on the "Quote" page of the client website. You must have access to the email used when filling out this form. This admin dashboard uses that address in the messaging system to facilitate communication between your email (the client email) and the admin's messaging system.
+Welcome to the Verdant Visions Admin Dashboard! This site is a platform addon to the client-facing site Verdant Visions Landscaping. To correctly use this application, you must fill out the quote request submission form on the "Quote" page of the client website. You must have access to the email used when filling out this form. This admin dashboard uses that address in the messaging system to facilitate communication between your email (the client email) and the admin's messaging system.
 
 Feel free to use the app to check out the live communication. This app is a proof of concept for my first dive into SAAS functionality, and additional features will be added over time.
 
