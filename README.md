@@ -2,7 +2,7 @@
 
 ## Description
 
-Verdant Visions Admin is an SAAS addon to the client-facing site, Verdant Visions Landscaping. This admin dashboard allows admins to manage and communicate with clients who submit quotes via the Verdant Visions Landscaping website. The system facilitates real-time communication and efficient quote management through a combination of React, Material UI, and AWS services.
+Verdant Visions Admin is a platform addon to the client-facing site, Verdant Visions Landscaping. This admin dashboard allows admins to manage and communicate with clients who submit quotes via the Verdant Visions Landscaping website. The system facilitates real-time communication and efficient quote management through a combination of React, Material UI, and AWS services.
 
 ## Features
 
