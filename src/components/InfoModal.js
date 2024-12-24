@@ -23,9 +23,9 @@ const InfoModal = ({ open, handleClose }) => {
           Welcome to the Verdant Visions Admin Dashboard
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          This site is an SAAS addon to the client-facing site Verdant Visions
-          Landscaping. To correctly use this application, you must fill out the
-          quote request submission form on the{" "}
+          This site is an platform addon to the client-facing site Verdant
+          Visions Landscaping. To correctly use this application, you must fill
+          out the quote request submission form on the{" "}
           <a
             href="https://www.verdantvisionslandscaping.com/quote"
             target="_blank"
