@@ -19,7 +19,6 @@ export const WebSocketProvider = ({ children }) => {
       return;
     }
 
-    console.log("WebSocket URL from config:", config.websocketUrl);
     ws.current = new WebSocket(config.websocketUrl);
 
     ws.current.onopen = () => {
