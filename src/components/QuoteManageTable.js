@@ -1,10 +1,30 @@
-import * as React from "react";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
+import {
+  TableCell,
+  TableRow,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import RowActionsMenu from "./RowActionsMenu";
+import React from "react";
 
 export default function QuoteManageTable({ quotes, onDelete }) {
-  console.log("Rendering QuoteManageTable with quotes: ", quotes);
+  const [open, setOpen] = React.useState(false);
+  const [selectedDescription, setSelectedDescription] = React.useState("");
+
+  const handleOpen = (description) => {
+    setSelectedDescription(description);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedDescription("");
+  };
 
   return (
     <>
@@ -33,9 +53,37 @@ export default function QuoteManageTable({ quotes, onDelete }) {
               .join(", ")}
           </TableCell>
           <TableCell>{quote.budget}</TableCell>
-          <TableCell>{quote.description}</TableCell>
+          <TableCell>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => handleOpen(quote.description)}
+            >
+              View description
+            </Button>
+          </TableCell>
         </TableRow>
       ))}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll="paper"
+        aria-labelledby="description-dialog-title"
+      >
+        <DialogTitle id="description-dialog-title">
+          Quote Description
+        </DialogTitle>
+        <DialogContent dividers>
+          <DialogContentText component="div" style={{ whiteSpace: "pre-wrap" }}>
+            {selectedDescription}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="outlined" onClick={handleClose}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }

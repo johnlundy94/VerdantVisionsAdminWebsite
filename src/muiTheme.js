@@ -44,6 +44,18 @@ const muiTheme = createTheme({
     },
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          borderColor: "#E0E0E0",
+          color: "#E0E0E0",
+          "&:hover": {
+            borderColor: "#FFFFFF",
+            backgroundColor: "rgba(224,224,224,0.08)",
+          },
+        },
+      },
+    },
     MuiDrawer: {
       styleOverrides: {
         paper: {
